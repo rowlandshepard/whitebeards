@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { AccountMenuComponent } from './account-menu.component';
 import { DataRepositoryService } from "./services/data-repository.service";
 
 @Component({
