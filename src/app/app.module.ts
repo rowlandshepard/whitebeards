@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CatalogComponent } from "./catalog/catalog.component";
 import { CatalogRepositoryService } from './catalog/catalog-repository.service';
-import { LoadingComponent } from "./components/loading-spinner.component";
+import { LoadingSpinnerComponent } from "./components/loading-spinner.component";
 import { NavBarComponent } from './nav-bar.component';
 import { RegisterComponent } from "./users/register.component";
 import { SignInComponent } from "./users/sign-in.component";
@@ -18,7 +18,7 @@ import { UserRepositoryService } from "./users/user-repository.service"
     AccountMenuComponent,
     AppComponent,
     CatalogComponent,
-    LoadingComponent,
+    LoadingSpinnerComponent,
     NavBarComponent,
     RegisterComponent,
     SignInComponent,

@@ -1,9 +1,4 @@
-export interface ICourse {
-  courseNumber: string
-  courseName: string
-  creditHours: number
-  description: string
-}
+import { ICourse } from "./course.model"
 
 export interface IClass {
   classId: string

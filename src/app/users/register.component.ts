@@ -1,8 +1,9 @@
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import {UserRepositoryService } from "./user-repository.service";
+import { Component } from "@angular/core";
+
 import { Router } from "@angular/router";
 import { IUser } from "./user.model";
-import { Component } from "@angular/core";
+import { UserRepositoryService } from "./user-repository.service";
 
 @Component({
   styleUrls: ['./register.component.css'],

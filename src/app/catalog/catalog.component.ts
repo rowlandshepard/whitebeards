@@ -1,6 +1,6 @@
-import { CatalogRepositoryService } from './catalog-repository.service';
 import { Component } from '@angular/core';
 
+import { CatalogRepositoryService } from './catalog-repository.service';
 import { IClass } from './class.model';
 import { UserRepositoryService } from "../users/user-repository.service"
 
@@ -12,7 +12,7 @@ export class CatalogComponent {
   classes: IClass[] = [];
   visibleClasses: IClass[] = [];
 
-  constructor(public catalogRepository: CatalogRepositoryService, public userRepository: UserRepositoryService) { }
+  constructor(private catalogRepository: CatalogRepositoryService, public userRepository: UserRepositoryService) { }
 
   ngOnInit() {
     this.catalogRepository.getCatalog()
