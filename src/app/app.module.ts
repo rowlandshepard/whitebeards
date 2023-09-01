@@ -6,11 +6,12 @@ import { AccountMenuComponent } from "./account-menu.component";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CatalogComponent } from "./catalog/catalog.component";
-import { DataRepositoryService } from "./services/data-repository.service"
+import { CatalogRepositoryService } from './catalog/catalog-repository.service';
 import { LoadingComponent } from "./components/loading-spinner.component";
 import { NavBarComponent } from './nav-bar.component';
 import { RegisterComponent } from "./users/register.component";
 import { SignInComponent } from "./users/sign-in.component";
+import { UserRepositoryService } from "./users/user-repository.service"
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SignInComponent } from "./users/sign-in.component";
     NavBarComponent,
     RegisterComponent,
     SignInComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { SignInComponent } from "./users/sign-in.component";
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [DataRepositoryService],
+  providers: [UserRepositoryService, CatalogRepositoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

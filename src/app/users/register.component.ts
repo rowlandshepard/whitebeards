@@ -1,5 +1,5 @@
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { DataRepositoryService } from "../services/data-repository.service";
+import {UserRepositoryService } from "./user-repository.service";
 import { Router } from "@angular/router";
 import { IUser } from "./user.model";
 import { Component } from "@angular/core";
@@ -17,7 +17,7 @@ export class RegisterComponent {
   password: FormControl;
   saving: boolean = false;
 
-  constructor(private router: Router, private dataRepository: DataRepositoryService) {
+  constructor(private router: Router, private userRepository: UserRepositoryService) {
     this.firstName = new FormControl('', Validators.required);
     this.lastName = new FormControl('', Validators.required);
     this.email = new FormControl('', Validators.required);
@@ -34,7 +34,7 @@ export class RegisterComponent {
 
   registerUser(user: IUser) {
     this.saving = true;
-    this.dataRepository.saveUser(user)
+    this.userRepository.saveUser(user)
       .subscribe({
         error: () => this.saving = false,
         complete: () => this.router.navigate(['/catalog'])
