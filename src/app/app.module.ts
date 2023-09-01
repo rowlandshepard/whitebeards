@@ -2,25 +2,25 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
+import { AccountMenuComponent } from "./account-menu.component";
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './components/app.component';
-import { NavBarComponent } from './components/nav-bar.component';
+import { AppComponent } from './app.component';
 import { CatalogComponent } from "./catalog/catalog.component";
+import { DataRepositoryService } from "./services/data-repository.service"
+import { LoadingComponent } from "./components/loading-spinner.component";
+import { NavBarComponent } from './nav-bar.component';
 import { RegisterComponent } from "./users/sign-in.component";
 import { SignInComponent } from "./users/sign-in.component";
-import { LoadingComponent } from "./components/loading-spinner.component";
-import { DataRepositoryService } from "./services/data-repository.service"
-import { AccountMenuComponent } from "./components/account-menu.component";
 
 @NgModule({
   declarations: [
+    AccountMenuComponent,
     AppComponent,
-    NavBarComponent,
     CatalogComponent,
+    LoadingComponent,
+    NavBarComponent,
     RegisterComponent,
     SignInComponent,
-    LoadingComponent,
-    AccountMenuComponent
   ],
   imports: [
     BrowserModule,

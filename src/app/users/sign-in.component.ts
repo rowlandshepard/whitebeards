@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 
 import { DataRepositoryService } from '../services/data-repository.service'
-import { IUser } from '../services/user.model';
+import { IUser } from './user.model';
 
 @Component({
   styles: [`
@@ -94,8 +94,8 @@ export class SignInComponent {
 }
 
 @Component({
-  styleUrls: ['../users/register.component.css'],
-  templateUrl: '../users/register.component.html'
+  styleUrls: ['./register.component.css'],
+  templateUrl: './register.component.html'
 })
 
 export class RegisterComponent {
