@@ -4,8 +4,8 @@ import { DataRepositoryService } from "../services/data-repository.service"
 import { IClass } from '../services/class.model';
 
 @Component({
-  styleUrls: ['../styles/catalog.component.css'],
-  templateUrl: '../templates/catalog.component.html'
+  styleUrls: ['../catalog/catalog.component.css'],
+  templateUrl: '../catalog/catalog.component.html'
 })
 export class CatalogComponent {
   classes: IClass[] = [];
