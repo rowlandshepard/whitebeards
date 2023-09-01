@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { AccountMenuComponent } from './account-menu.component';
 import { UserRepositoryService } from "../users/user-repository.service";
 
 @Component({
-  selector: 'nav-bar',
+  selector: 'wb-core-nav-bar',
   styleUrls: [`./nav-bar.component.css`],
   template: `
     <div class="nav-bar">
