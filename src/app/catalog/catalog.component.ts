@@ -44,12 +44,16 @@ export class CatalogComponent {
     }
 
     if (filter === 'GEN') {
+      this.showOnlyGeneralCourses();
+    } else {
+      this.visibleClasses = this.classes.filter(c => c.course.courseNumber.startsWith(filter));
+    }
+  }
+
+  private showOnlyGeneralCourses(){
       this.visibleClasses = this.classes.filter(c =>
         !c.course.courseNumber.startsWith('CH') &&
         !c.course.courseNumber.startsWith('PO') &&
         !c.course.courseNumber.startsWith('SP'));
-    } else {
-      this.visibleClasses = this.classes.filter(c => c.course.courseNumber.startsWith(filter));
-    }
   }
 }
