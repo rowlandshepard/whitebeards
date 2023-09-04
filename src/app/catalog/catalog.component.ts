@@ -1,28 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import { CatalogRepositoryService } from './catalog-repository.service';
 import { IClass } from './class.model';
 import { UserRepositoryService } from "../users/user-repository.service"
+import { FilterClassesService } from './filter-classes.service';
 
 @Component({
   styleUrls: ['./catalog.component.css'],
   templateUrl: './catalog.component.html'
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit, OnChanges {
   classes: IClass[] = [];
   visibleClasses: IClass[] = [];
 
-  constructor(private catalogRepository: CatalogRepositoryService, public userRepository: UserRepositoryService) { }
+  constructor(private filterClassesService: FilterClassesService,
+              private catalogRepository: CatalogRepositoryService,
+              public userRepository: UserRepositoryService) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
 
   ngOnInit() {
-    this.catalogRepository.getCatalog()
-      .subscribe((classes: IClass[]) => { this.classes = classes; this.applyFilter('') });
+    var catalogObservable = this.catalogRepository.getCatalog()
+
+    var catalogObservableSubscription = catalogObservable.subscribe(
+       (classes: IClass[]) => { this.classes = classes; this.applyFilter('') });
   }
 
   enroll(classToEnroll: IClass) {
     classToEnroll.processing = true;
     this.userRepository.enroll(classToEnroll.classId)
       .subscribe({
+        next: ()=> {},
         error: (err) => { console.error(err); classToEnroll.processing = false },
         complete: () => { classToEnroll.processing = false; classToEnroll.enrolled = true; },
       });
@@ -37,23 +47,7 @@ export class CatalogComponent {
       });
   }
 
-  applyFilter(filter: string) {
-    if (!filter) {
-      this.visibleClasses = this.classes;
-      return;
-    }
-
-    if (filter === 'GEN') {
-      this.showOnlyGeneralCourses();
-    } else {
-      this.visibleClasses = this.classes.filter(c => c.course.courseNumber.startsWith(filter));
-    }
-  }
-
-  private showOnlyGeneralCourses(){
-      this.visibleClasses = this.classes.filter(c =>
-        !c.course.courseNumber.startsWith('CH') &&
-        !c.course.courseNumber.startsWith('PO') &&
-        !c.course.courseNumber.startsWith('SP'));
+  applyFilter(filter:string) {
+    this.visibleClasses = this.filterClassesService.filterClasses(filter, this.classes);
   }
 }

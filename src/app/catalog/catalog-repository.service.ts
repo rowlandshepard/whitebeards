@@ -16,7 +16,7 @@ export class CatalogRepositoryService {
       courseCatalog.map(catalogClass => {
         return { ...catalogClass, enrolled: classes.includes(catalogClass.classId) };
       });
-    setTimeout(() => { subject.next(catalogWithEnrollmentStatus); subject.complete(); }, 200);
+    setTimeout(() => { subject.next(catalogWithEnrollmentStatus); subject.complete(); }, 2000);
 
     return subject;
   }
