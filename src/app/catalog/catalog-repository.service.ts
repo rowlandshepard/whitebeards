@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+
 import { ICourse } from '../catalog/course.model';
 import { IClass } from '../catalog/class.model';
 import { UserRepositoryService } from '../users/user-repository.service';
 
-@Injectable()
+@Injectable({providedIn:"root"})
 export class CatalogRepositoryService {
 
-  constructor(private userRepository:UserRepositoryService ) { }
+  constructor( private userRepository:UserRepositoryService ) { }
 
   getCatalog(): Observable<IClass[]> {
     const subject = new Subject<IClass[]>();

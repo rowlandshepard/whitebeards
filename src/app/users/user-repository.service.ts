@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, EMPTY, throwError, timer } from 'rxjs';
 import { IUser } from './user.model';
 
-@Injectable()
+@Injectable( {
+  providedIn: 'root' // singleton
+})
 export class UserRepositoryService {
   currentUser: IUser | null = null;
 
